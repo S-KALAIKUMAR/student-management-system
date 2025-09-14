@@ -1,0 +1,12 @@
+from sqlconnect import conn
+
+#create/add student
+def add_student(name,age,gender,phone):
+    cursor = conn.cursor()
+    query=""" insert into students(name,age,gender,phone)
+              values(%s,%s,%s,%s)"""
+    values=(name,age,gender,phone)
+    cursor.execute(query,values)
+    conn.commit()
+    cursor.close()
+    
